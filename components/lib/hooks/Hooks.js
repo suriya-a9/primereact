@@ -14,6 +14,7 @@ import { useOverlayScrollListener } from './useOverlayScrollListener';
 import { usePrevious } from './usePrevious';
 import { useResizeListener } from './useResizeListener';
 import { useLocalStorage, useSessionStorage, useStorage } from './useStorage';
+import { useStyle } from './useStyle';
 import { useTimeout } from './useTimeout';
 import { useUnmountEffect } from './useUnmountEffect';
 import { useUpdateEffect } from './useUpdateEffect';
@@ -39,5 +40,6 @@ export {
     useMove,
     useClickOutside,
     useDebounce,
-    useMatchMedia
+    useMatchMedia,
+    useStyle
 };

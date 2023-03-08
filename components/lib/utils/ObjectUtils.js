@@ -299,4 +299,22 @@ export default class ObjectUtils {
 
         return result;
     }
+
+    static camelToKebab(str = '') {
+        return str.replace(/[A-Z]/g, (char) => '-' + char.toLowerCase());
+    }
+
+    static convertToCSSVariables(variables = {}, prefix = 'p-') {
+        return Object.entries(variables).reduce((acc, [k, v]) => {
+            acc[`--${prefix + ObjectUtils.camelToKebab(k)}`] = v;
+
+            return acc;
+        }, {});
+    }
+
+    static convertToString(value) {
+        // @todo
+
+        return Object.entries(value).reduce((acc, [k, v]) => (acc += `${k}:${v};`), '');
+    }
 }

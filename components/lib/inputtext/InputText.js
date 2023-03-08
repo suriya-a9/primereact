@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { CommonBase } from '../common/CommonBase';
+import { useStyle } from '../hooks/useStyle';
 import { KeyFilter } from '../keyfilter/KeyFilter';
 import { Tooltip } from '../tooltip/Tooltip';
 import { classNames, DomHandler, ObjectUtils } from '../utils/Utils';
@@ -8,6 +10,8 @@ export const InputText = React.memo(
     React.forwardRef((inProps, ref) => {
         const props = InputTextBase.getProps(inProps);
 
+        const commonStyleStatus = useStyle(CommonBase.getComputedStyle(props)); // move to PrimeReactProvider
+        const styleStatus = useStyle(InputTextBase.getComputedStyle(props));
         const elementRef = React.useRef(ref);
 
         const onKeyDown = (event) => {
@@ -59,10 +63,11 @@ export const InputText = React.memo(
             },
             props.className
         );
+        const style = { ...ObjectUtils.convertToCSSVariables(props.themeProps, 'p-inputtext-'), ...otherProps.style };
 
         return (
             <>
-                <input ref={elementRef} {...otherProps} className={className} onInput={onInput} onKeyDown={onKeyDown} onPaste={onPaste} />
+                <input ref={elementRef} {...otherProps} style={style} className={className} onInput={onInput} onKeyDown={onKeyDown} onPaste={onPaste} />
                 {hasTooltip && <Tooltip target={elementRef} content={props.tooltip} {...props.tooltipOptions} />}
             </>
         );
