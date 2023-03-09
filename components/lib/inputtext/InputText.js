@@ -63,7 +63,7 @@ export const InputText = React.memo(
             },
             props.className
         );
-        const style = { ...ObjectUtils.convertToCSSVariables(props.themeProps, 'p-inputtext-'), ...otherProps.style };
+        const style = { ...ObjectUtils.convertToCSSVariables(props.themeProps?.root, 'p-inputtext-'), ...otherProps.style };
 
         return (
             <>

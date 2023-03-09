@@ -1,0 +1,57 @@
+{
+    "global": {
+        "fontFamily":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+        "fontSize": "{inputPadding.top} * 2",
+        "iconFontSize": {
+            "value": "{inputPadding.top} * 2",
+            "type": "string"
+          },
+        "fontWeight": "normal",
+        "borderRadius":"6px",
+        "transitionDuration":".2s",
+        "formElementTransition": "background-color var(--p-transition-duration), color var(--p-transition-duration), border-color var(--p-transition-duration), box-shadow var(--p-transition-duration)",
+        "primeiconFontSize": "1rem",
+        "errorColor": "#e24c4c",
+        "scaleSmall": 0.875,
+        "scaleLarge": 1.25,
+        "focusOutlineStyle": "none",
+        "focusOutlineColor": "#C7D2FE",
+        "focusOutlineWidth": 0,
+        "focusOutlineOffset": 0,
+        "focusShadow": "0 0 0 0.2rem var(--p-focus-outline-color)",
+        "inputPadding": {
+            "top": ".75rem",
+            "right": ".75rem",
+            "bottom": ".75rem",
+            "left": ".75rem"
+        },
+        "inputFontSize": "1rem",
+        "inputBackground": "#ffffff",
+        "inputColor": "#495057",
+        "inputIconColor": "#6c757d",
+        "inputBorder": {
+            "width": "1px",
+            "style": "solid",
+            "color": "#ced4da"
+        },
+        "inputHoverBorder": {
+            "width": "1px",
+            "style": "solid",
+            "color": "#6366F1"
+        },
+        "inputFocusBorder": {
+            "width": "1px",
+            "style": "solid",
+            "color": "#6366F1"
+        },
+        "inputErrorBorder": {
+            "width": "1px",
+            "style": "solid",
+            "color": "#e24c4c"
+        },
+        "inputPlaceholderColor": "#6c757d",
+        "inputFilledBackground": "#e9ecef",
+        "inputFilledHoverBackground": "#e9ecef",
+        "inputFilledFocusBackground": "#ffffff"
+    }
+}

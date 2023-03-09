@@ -142,64 +142,61 @@ export const InputTextBase = {
         `;
         const styled = `
 .p-inputtext {
-    font-family: var(--p-inputtext-font-family);
-    font-size: var(--p-inputtext-font-size);
-    color: var(--p-inputtext-color);
-    background: var(--p-inputtext-background);
-    padding-top: var(--p-inputtext-padding-top);
-    padding-right: var(--p-inputtext-padding-right);
-    padding-bottom: var(--p-inputtext-padding-bottom);
-    padding-left: var(--p-inputtext-padding-left);
-    border-width: var(--p-inputtext-border-width);
-    border-style: var(--p-inputtext-border-style);
-    border-color: var(--p-inputtext-border-color);
-    border-radius: var(--p-inputtext-border-radius);
-    transition: var(--p-inputtext-transition);
+    font-family: ${variables.fontFamily};
+    font-size: ${variables.fontSize};
+    color: ${variables.color};
+    background: ${variables.background};
+    padding-top: ${variables.paddingTop};
+    padding-right: ${variables.paddingRight};
+    padding-bottom: ${variables.paddingBottom};
+    padding-left: ${variables.paddingLeft};
+    border-width: ${variables.borderWidth};
+    border-style: ${variables.borderStyle};
+    border-color: ${variables.borderColor};
+    border-radius: ${variables.borderRadius};
+    transition: ${variables.transition};
     appearance: none;
 }
 .p-inputtext:enabled:hover {
-    border-width: var(--p-inputtext-hover-border-width);
-    border-style: var(--p-inputtext-hover-border-style);
-    border-color: var(--p-inputtext-hover-border-color);
+    border-width: ${variables.hoverBorderWidth};
+    border-style: ${variables.hoverBorderStyle};
+    border-color: ${variables.hoverBorderColor};
 }
 .p-inputtext:enabled:focus {
-    outline-style: var(--p-inputtext-focus-outline-style);
-    outline-color: var(--p-inputtext-focus-outline-color);
-    outline-width: var(--p-inputtext-focus-outline-width);
-    outline-offset: var(--p-inputtext-focus-outline-offset);
-    border-width: var(--p-inputtext-focus-border-width);
-    border-style: var(--p-inputtext-focus-border-style);
-    border-color: var(--p-inputtext-focus-border-color);
-    box-shadow: var(--p-inputtext-focus-shadow);
+    outline-style: ${variables.focusOutlineStyle};
+    outline-color: ${variables.focusOutlineColor};
+    outline-width: ${variables.focusOutlineWidth};
+    outline-offset: ${variables.focusOutlineOffset};
+    border-width: ${variables.focusBorderWidth};
+    border-style: ${variables.focusBorderStyle};
+    border-color: ${variables.focusBorderColor};
+    box-shadow: ${variables.focusShadow};
 }
 .p-inputtext.p-invalid.p-component {
-    border-width: var(--p-inputtext-error-border-width);
-    border-style: var(--p-inputtext-error-border-style);
-    border-color: var(--p-inputtext-error-border-color);
+    border-width: ${variables.errorBorderWidth};
+    border-style: ${variables.errorBorderStyle};
+    border-color: ${variables.errorBorderColor};
 }
 .p-inputtext-sm {
-    font-size: calc(var(--p-inputtext-font-size) * var(--p-inputtext-scale-small));
-    padding-top: calc(var(--p-inputtext-padding-top) * var(--p-inputtext-scale-small));
-    padding-right: calc(var(--p-inputtext-padding-right) * var(--p-inputtext-scale-small));
-    padding-bottom: calc(var(--p-inputtext-padding-bottom) * var(--p-inputtext-scale-small));
-    padding-left: calc(var(--p-inputtext-padding-left) * var(--p-inputtext-scale-small));
+    font-size: calc(${variables.fontSize} * ${variables.scaleSmall});
+    padding-top: calc(${variables.paddingTop} * ${variables.scaleSmall});
+    padding-right: calc(${variables.paddingRight} * ${variables.scaleSmall});
+    padding-bottom: calc(${variables.paddingBottom} * ${variables.scaleSmall});
+    padding-left: calc(${variables.paddingLeft} * ${variables.scaleSmall});
 }
 .p-inputtext-lg {
-    font-size: calc(var(--p-inputtext-font-size) * var(--p-inputtext-scale-large));
-    padding-top: calc(var(--p-inputtext-padding-top) * var(--p-inputtext-scale-large));
-    padding-right: calc(var(--p-inputtext-padding-right) * var(--p-inputtext-scale-large));
-    padding-bottom: calc(var(--p-inputtext-padding-bottom) * var(--p-inputtext-scale-large));
-    padding-left: calc(var(--p-inputtext-padding-left) * var(--p-inputtext-scale-large));
+    font-size: calc(${variables.fontSize} * ${variables.scaleLarge});
+    padding-top: calc(${variables.paddingTop} * ${variables.scaleLarge});
+    padding-right: calc(${variables.paddingRight} * ${variables.scaleLarge});
+    padding-bottom: calc(${variables.paddingBottom} * ${variables.scaleLarge});
+    padding-left: calc(${variables.paddingLeft} * ${variables.scaleLarge});
 }
         `;
 
-        const cssVariables = ObjectUtils.convertToString(ObjectUtils.convertToCSSVariables(variables, 'p-inputtext-'));
+        //const cssVariables = ObjectUtils.convertToString(ObjectUtils.convertToCSSVariables(variables, 'p-inputtext-'));
 
         return `
 /** module: inputtext **/
-.p-inputtext {
-    ${cssVariables}
-}
 ${unstyled}
 ${styled}
         `;

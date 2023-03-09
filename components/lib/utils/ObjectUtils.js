@@ -305,16 +305,34 @@ export default class ObjectUtils {
     }
 
     static convertToCSSVariables(variables = {}, prefix = 'p-') {
+        const getValue = (value) => {
+            // @todo: check from parent variables
+            const regex = /{([^}]+)}/g;
+
+            return regex.test(value) ? `calc(${value.replace(regex, (v) => ObjectUtils.resolveFieldData(variables, v.replace(/{|}/g, '')))})` : value;
+
+            //return value.match(regex).map((v) => ObjectUtils.resolveFieldData(variables, v.replace(/{|}/g, '')));
+        };
+
         return Object.entries(variables).reduce((acc, [k, v]) => {
-            acc[`--${prefix + ObjectUtils.camelToKebab(k)}`] = v;
+            const px = prefix + ObjectUtils.camelToKebab(k);
+
+            if (typeof v === 'object') {
+                if (v.hasOwnProperty('value')) {
+                    acc[`--${px}`] = getValue(v.value);
+                } else {
+                    acc = { ...acc, ...ObjectUtils.convertToCSSVariables(v, `${px}-`) };
+                }
+            } else {
+                acc[`--${px}`] = getValue(v);
+            }
 
             return acc;
         }, {});
     }
 
     static convertToString(value) {
-        // @todo
-
+        // @todo: convert from more types
         return Object.entries(value).reduce((acc, [k, v]) => (acc += `${k}:${v};`), '');
     }
 }

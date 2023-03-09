@@ -1,18 +1,7 @@
 import React from 'react';
 import { DocComponent } from '../../components/doc/common/doccomponent';
-import { AccessibilityDoc } from '../../components/doc/inputtext/accessibilitydoc';
 import { BasicDoc } from '../../components/doc/inputtext/basicdoc';
-import { DisabledDoc } from '../../components/doc/inputtext/disableddoc';
-import { FloatLabelDoc } from '../../components/doc/inputtext/floatlabeldoc';
-import { FormikDoc } from '../../components/doc/inputtext/form/formikdoc';
-import { HookFormDoc } from '../../components/doc/inputtext/form/hookformdoc';
-import { HelpTextDoc } from '../../components/doc/inputtext/helptextdoc';
-import { IconsDoc } from '../../components/doc/inputtext/iconsdoc';
 import { ImportDoc } from '../../components/doc/inputtext/importdoc';
-import { InvalidDoc } from '../../components/doc/inputtext/invaliddoc';
-import { KeyFilterDoc } from '../../components/doc/inputtext/keyfilterdoc';
-import { SizesDoc } from '../../components/doc/inputtext/sizesdoc';
-import { StyleDoc } from '../../components/doc/inputtext/styledoc';
 
 const InputTextDemo = () => {
     const docs = [
@@ -25,8 +14,8 @@ const InputTextDemo = () => {
             id: 'basic',
             label: 'Basic',
             component: BasicDoc
-        },
-        {
+        }
+        /*{
             id: 'icons',
             label: 'Icons',
             component: IconsDoc
@@ -87,7 +76,7 @@ const InputTextDemo = () => {
             id: 'accessibility',
             label: 'Accessibility',
             component: AccessibilityDoc
-        }
+        }*/
     ];
 
     return <DocComponent title="React Input Component" header="InputText" description="InputText is an extension to standard input element with theming and keyfiltering." componentDocs={docs} apiDocs={['InputText']} />;
