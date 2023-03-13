@@ -36,38 +36,43 @@ export const InputTextBase = {
                 color: `var(${prefix}border-color, var(--p-input-border-color))`,
                 radius: `var(${prefix}border-radius, var(--p-border-radius))`
             },
+            appearance: `var(${prefix}appearance, none)`,
             transition: `var(${prefix}transition, var(--p-form-element-transition))`,
-            hover: {
-                border: {
-                    width: `var(${prefix}hover-border-width, var(--p-input-hover-border-width))`,
-                    style: `var(${prefix}hover-border-style, var(--p-input-hover-border-style))`,
-                    color: `var(${prefix}hover-border-color, var(--p-input-hover-border-color))`
+            states: {
+                hover: {
+                    border: {
+                        width: `var(${prefix}hover-border-width, var(--p-input-hover-border-width))`,
+                        style: `var(${prefix}hover-border-style, var(--p-input-hover-border-style))`,
+                        color: `var(${prefix}hover-border-color, var(--p-input-hover-border-color))`
+                    }
+                },
+                focus: {
+                    outline: {
+                        color: `var(${prefix}focus-outline-color, var(--p-focus-outline-color))`,
+                        style: `var(${prefix}focus-outline-style, var(--p-focus-outline-style))`,
+                        width: `var(${prefix}focus-outline-width, var(--p-focus-outline-width))`,
+                        offset: `var(${prefix}focus-outline-offset, var(--p-focus-outline-offset))`
+                    },
+                    border: {
+                        width: `var(${prefix}focus-border-width, var(--p-input-focus-border-width))`,
+                        style: `var(${prefix}focus-border-style, var(--p-input-focus-border-style))`,
+                        color: `var(${prefix}focus-border-color, var(--p-input-focus-border-color))`
+                    },
+                    shadow: `var(${prefix}focus-shadow, var(--p-focus-shadow))`
+                },
+                error: {
+                    border: {
+                        width: `var(${prefix}error-border-width, var(--p-input-error-border-width))`,
+                        style: `var(${prefix}error-border-style, var(--p-input-error-border-style))`,
+                        color: `var(${prefix}error-border-color, var(--p-input-error-border-color))`
+                    }
                 }
             },
-            focus: {
-                outline: {
-                    color: `var(${prefix}focus-outline-color, var(--p-focus-outline-color))`,
-                    style: `var(${prefix}focus-outline-style, var(--p-focus-outline-style))`,
-                    width: `var(${prefix}focus-outline-width, var(--p-focus-outline-width))`,
-                    offset: `var(${prefix}focus-outline-offset, var(--p-focus-outline-offset))`
-                },
-                border: {
-                    width: `var(${prefix}focus-border-width, var(--p-input-focus-border-width))`,
-                    style: `var(${prefix}focus-border-style, var(--p-input-focus-border-style))`,
-                    color: `var(${prefix}focus-border-color, var(--p-input-focus-border-color))`
-                },
-                shadow: `var(${prefix}focus-shadow, var(--p-focus-shadow))`
-            },
-            error: {
-                border: {
-                    width: `var(${prefix}error-border-width, var(--p-input-error-border-width))`,
-                    style: `var(${prefix}error-border-style, var(--p-input-error-border-style))`,
-                    color: `var(${prefix}error-border-color, var(--p-input-error-border-color))`
+            types: {
+                scale: {
+                    small: `var(${prefix}scale-small, var(--p-scale-small, 1))`,
+                    large: `var(${prefix}scale-large, var(--p-scale-large, 1))`
                 }
-            },
-            scale: {
-                small: `var(${prefix}scale-small, var(--p-scale-small, 1))`,
-                large: `var(${prefix}scale-large, var(--p-scale-large, 1))`
             }
         };
         const unstyled = `
@@ -178,41 +183,41 @@ export const InputTextBase = {
     border-color: ${variables.border.color};
     border-radius: ${variables.border.radius};
     transition: ${variables.transition};
-    appearance: none;
+    appearance: ${variables.appearance};
 }
 .p-inputtext:enabled:hover {
-    border-width: ${variables.hover.border.width};
-    border-style: ${variables.hover.border.style};
-    border-color: ${variables.hover.border.color};
+    border-width: ${variables.states.hover.border.width};
+    border-style: ${variables.states.hover.border.style};
+    border-color: ${variables.states.hover.border.color};
 }
 .p-inputtext:enabled:focus {
-    outline-style: ${variables.focus.outline.style};
-    outline-color: ${variables.focus.outline.color};
-    outline-width: ${variables.focus.outline.width};
-    outline-offset: ${variables.focus.outline.offset};
-    border-width: ${variables.focus.border.width};
-    border-style: ${variables.focus.border.style};
-    border-color: ${variables.focus.border.color};
-    box-shadow: ${variables.focus.shadow};
+    outline-style: ${variables.states.focus.outline.style};
+    outline-color: ${variables.states.focus.outline.color};
+    outline-width: ${variables.states.focus.outline.width};
+    outline-offset: ${variables.states.focus.outline.offset};
+    border-width: ${variables.states.focus.border.width};
+    border-style: ${variables.states.focus.border.style};
+    border-color: ${variables.states.focus.border.color};
+    box-shadow: ${variables.states.focus.shadow};
 }
 .p-inputtext.p-invalid.p-component {
-    border-width: ${variables.error.border.width};
-    border-style: ${variables.error.border.style};
-    border-color: ${variables.error.border.color};
+    border-width: ${variables.states.error.border.width};
+    border-style: ${variables.states.error.border.style};
+    border-color: ${variables.states.error.border.color};
 }
 .p-inputtext-sm {
-    font-size: calc(${variables.font.size} * ${variables.scale.small});
-    padding-top: calc(${variables.padding.top} * ${variables.scale.small});
-    padding-right: calc(${variables.padding.right} * ${variables.scale.small});
-    padding-bottom: calc(${variables.padding.bottom} * ${variables.scale.small});
-    padding-left: calc(${variables.padding.left} * ${variables.scale.small});
+    font-size: calc(${variables.font.size} * ${variables.types.scale.small});
+    padding-top: calc(${variables.padding.top} * ${variables.types.scale.small});
+    padding-right: calc(${variables.padding.right} * ${variables.types.scale.small});
+    padding-bottom: calc(${variables.padding.bottom} * ${variables.types.scale.small});
+    padding-left: calc(${variables.padding.left} * ${variables.types.scale.small});
 }
 .p-inputtext-lg {
-    font-size: calc(${variables.font.size} * ${variables.scale.large});
-    padding-top: calc(${variables.padding.top} * ${variables.scale.large});
-    padding-right: calc(${variables.padding.right} * ${variables.scale.large});
-    padding-bottom: calc(${variables.padding.bottom} * ${variables.scale.large});
-    padding-left: calc(${variables.padding.left} * ${variables.scale.large});
+    font-size: calc(${variables.font.size} * ${variables.types.scale.large});
+    padding-top: calc(${variables.padding.top} * ${variables.types.scale.large});
+    padding-right: calc(${variables.padding.right} * ${variables.types.scale.large});
+    padding-bottom: calc(${variables.padding.bottom} * ${variables.types.scale.large});
+    padding-left: calc(${variables.padding.left} * ${variables.types.scale.large});
 }
         `;
 
