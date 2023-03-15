@@ -10,8 +10,8 @@ export const InputText = React.memo(
     React.forwardRef((inProps, ref) => {
         const props = InputTextBase.getProps(inProps);
 
-        const commonStyleStatus = useStyle(CommonBase.getComputedStyle(props)); // move to PrimeReactProvider
-        const styleStatus = useStyle(InputTextBase.getComputedStyle(props));
+        const commonStyleStatus = useStyle({ style: CommonBase.getComputedStyle(props), options: { key: 'common' } }); // move to PrimeReactProvider
+        const styleStatus = useStyle({ style: InputTextBase.getComputedStyle(props), options: { key: 'inputtext' } });
         const elementRef = React.useRef(ref);
 
         const onKeyDown = (event) => {

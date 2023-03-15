@@ -9,12 +9,12 @@ import { DocSectionText } from '../common/docsectiontext';
 export function BasicDoc(props) {
     /** PrimeReactProvider */
     const cssVariables = ObjectUtils.convertToString(ObjectUtils.convertToCSSVariables(LaraLight?.default.global));
-    const styles = `
+    const style = `
 :root {
     ${cssVariables}
 }
     `;
-    const status = useStyle(styles);
+    const status = useStyle({ style });
     /*********************/
 
     const [value, setValue] = useState('');
