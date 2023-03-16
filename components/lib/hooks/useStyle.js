@@ -3,6 +3,8 @@ import * as React from 'react';
 import { DomHandler } from '../utils/Utils';
 
 /* @todo */
+
+// use new Set object
 //data-prime-type="global | scoped"
 //data-prime-key="...."
 

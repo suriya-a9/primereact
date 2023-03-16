@@ -15,7 +15,7 @@ export const InputTextBase = {
     },
     getProps: (props) => ObjectUtils.getMergedProps(props, InputTextBase.defaultProps),
     getOtherProps: (props) => ObjectUtils.getDiffProps(props, InputTextBase.defaultProps),
-    getComputedStyle: (props) => {
+    getStyleProps: (props) => {
         const prefix = '--p-inputtext-';
         const variables = {
             font: {
@@ -75,6 +75,11 @@ export const InputTextBase = {
                 }
             }
         };
+
+        return { prefix, variables };
+    },
+    getComputedStyle: (props) => {
+        const { variables } = InputTextBase.getStyleProps(props);
         const unstyled = `
 .p-inputtext {
     margin: 0;
@@ -205,14 +210,14 @@ export const InputTextBase = {
     border-style: ${variables.states.error.border.style};
     border-color: ${variables.states.error.border.color};
 }
-.p-inputtext-sm {
+.p-inputtext.p-inputtext-sm {
     font-size: calc(${variables.font.size} * ${variables.types.scale.small});
     padding-top: calc(${variables.padding.top} * ${variables.types.scale.small});
     padding-right: calc(${variables.padding.right} * ${variables.types.scale.small});
     padding-bottom: calc(${variables.padding.bottom} * ${variables.types.scale.small});
     padding-left: calc(${variables.padding.left} * ${variables.types.scale.small});
 }
-.p-inputtext-lg {
+.p-inputtext.p-inputtext-lg {
     font-size: calc(${variables.font.size} * ${variables.types.scale.large});
     padding-top: calc(${variables.padding.top} * ${variables.types.scale.large});
     padding-right: calc(${variables.padding.right} * ${variables.types.scale.large});
@@ -220,8 +225,6 @@ export const InputTextBase = {
     padding-left: calc(${variables.padding.left} * ${variables.types.scale.large});
 }
         `;
-
-        //const cssVariables = ObjectUtils.convertToString(ObjectUtils.convertToCSSVariables(variables, 'p-inputtext-'));
 
         return `
 /** module: inputtext **/

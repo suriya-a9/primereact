@@ -1,31 +1,94 @@
-import { ObjectUtils } from '../utils/Utils';
-
 export const CommonBase = {
-    mixins: {
-        placeholder: (content = '') => `
-::-webkit-input-placeholder {
-    ${content}
-}
-:-moz-placeholder {
-    ${content}
-}
-::-moz-placeholder {
-    ${content}
-}
-:-ms-input-placeholder {
-    ${content}
-}
-        `
+    getStyleProps: (props) => {
+        const prefix = 'p-';
+        const variables = {
+            font: {
+                family: `var(${prefix}font-family)`,
+                size: `var(${prefix}font-size)`
+            },
+            error: {
+                color: `var(${prefix}error-color)`
+            },
+            transition: {
+                duration: `var(${prefix}transition-duration)`
+            },
+            border: {
+                radius: `var(${prefix}border-radius)`
+            },
+            primeicon: {
+                font: {
+                    size: `var(${prefix}primeicon-font-size)`
+                }
+            },
+            inlineSpacing: `var(${prefix}inline-spacing)`,
+            scale: {
+                small: `var(${prefix}scale-small, 1)`,
+                large: `var(${prefix}scale-large, 1)`
+            },
+            focus: {
+                outline: {
+                    style: `var(${prefix}focus-outline-style)`,
+                    color: `var(${prefix}focus-outline-color)`,
+                    width: `var(${prefix}focus-outline-width)`,
+                    offset: `var(${prefix}focus-outline-offset)`
+                },
+                shadow: `var(${prefix}focus-shadow)`
+            },
+            input: {
+                font: {
+                    family: `var(${prefix}input-font-family, var(${prefix}font-family))`,
+                    size: `var(${prefix}input-font-size, var(${prefix}font-size))`
+                },
+                padding: {
+                    top: `var(${prefix}input-padding-top)`,
+                    right: `var(${prefix}input-padding-right)`,
+                    bottom: `var(${prefix}input-padding-bottom)`,
+                    left: `var(${prefix}input-padding-left)`
+                },
+                slots: {
+                    placeholder: {
+                        color: `var(${prefix}input-placeholder-color)`
+                    },
+                    icon: {
+                        color: `var(${prefix}input-icon-color)`
+                    }
+                },
+                types: {
+                    filled: {
+                        background: `var(${prefix}input-filled-background)`,
+                        states: {
+                            hover: {
+                                background: `var(${prefix}input-filled-hover-background)`
+                            },
+                            focus: {
+                                background: `var(${prefix}input-filled-focus-background)`
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        const mixins = {
+            placeholder: (content = '') => `
+    ::-webkit-input-placeholder {
+        ${content}
+    }
+    :-moz-placeholder {
+        ${content}
+    }
+    ::-moz-placeholder {
+        ${content}
+    }
+    :-ms-input-placeholder {
+        ${content}
+    }
+            `
+        };
+
+        return { prefix, variables, mixins };
     },
     getComputedStyle: (props) => {
-        const variables = {
-            inputPaddingLeft: 'var(--p-common-input-padding-left, var(--p-input-padding-left))',
-            inputPaddingRight: 'var(--p-common-input-padding-right, var(--p-input-padding-right))',
-            inputPlaceholderColor: 'var(--p-common-input-placeholder-color, var(--p-input-placeholder-color))',
-            errorColor: 'var(--p-common-error-color, var(--p-error-color))',
-            inputIconColor: 'var(--p-common-input-icon-color, var(--p-input-icon-color))',
-            primeiconFontSize: 'var(--p-common-primeicon-font-size, var(--p-primeicon-font-size))'
-        };
+        const { variables, mixins } = CommonBase.getStyleProps(props);
         const unstyled = `
 .p-component, .p-component * {
     box-sizing: border-box;
@@ -202,51 +265,63 @@ export const CommonBase = {
         const styled = `
 /***** _inputtext.scss *****/
 .p-float-label > label {
-    left: var(--p-common-input-padding-left);
-    color: var(--p-common-input-placeholder-color);
-    transition-duration: $transitionDuration;
+    left: ${variables.input.padding.left};
+    color: ${variables.input.placeholder.color};
+    transition-duration: ${variables.transition.duration};
 }
-
 .p-float-label > label.p-error {
-    color: var(--p-common-error-color);
+    color: ${variables.error.color};
 }
-
 .p-input-icon-left > i:first-of-type,
 .p-input-icon-left > svg:first-of-type,
 .p-input-icon-left > .p-input-prefix {
-    left: var(--p-common-input-padding-left);
-    color: var(--p-common-input-icon-color);
+    left: ${variables.input.padding.left};
+    color: ${variables.input.icon.color};
 }
-
 .p-input-icon-left > .p-inputtext {
-    padding-left: calc(calc(var(--p-common-input-padding-left) * 2) + var(--p-primeicon-font-size));
+    padding-left: calc(calc(${variables.input.padding.left} * 2) + ${variables.primeicon.fontSize});
 }
-
 .p-input-icon-left.p-float-label > label {
-    left: calc(calc(var(--p-common-input-padding-left) * 2) + var(--p-primeicon-font-size));
+    left: calc(calc(${variables.input.padding.left} * 2) + ${variables.primeicon.fontSize});
 }
-
 .p-input-icon-right > i:last-of-type,
 .p-input-icon-right > svg:last-of-type,
 .p-input-icon-right > .p-input-suffix {
-    right: var(--p-common-input-padding-right);
-    color: var(--p-common-input-icon-color);
+    right: ${variables.input.padding.right};
+    color: ${variables.input.icon.color};
 }
-
 .p-input-icon-right > .p-inputtext {
-    padding-right: calc(calc(var(--p-common-input-padding-right) * 2) + var(--p-primeicon-font-size));
+    padding-right: calc(calc(${variables.input.padding.right} * 2) + ${variables.primeicon.fontSize});
+}
+${mixins.placeholder(`color: ${variables.input.placeholder.color};`)}
+.p-input-filled .p-inputtext {
+    background: ${variables.types.filled.background};
+}
+.p-input-filled .p-inputtext:enabled:hover {
+    background: ${variables.types.filled.states.hover.background};
+}
+.p-input-filled .p-inputtext:enabled:focus {
+    background: ${variables.types.filled.states.focus.background};
+}
+.p-inputtext-sm .p-inputtext {
+    font-size: calc(${variables.font.size} * ${variables.scale.small});
+    padding-top: calc(${variables.padding.top} * ${variables.scale.small});
+    padding-right: calc(${variables.padding.right} * ${variables.scale.small});
+    padding-bottom: calc(${variables.padding.bottom} * ${variables.scale.small});
+    padding-left: calc(${variables.padding.left} * ${variables.scale.small});
+}
+.p-inputtext-lg .p-inputtext {
+    font-size: calc(${variables.font.size} * ${variables.scale.large});
+    padding-top: calc(${variables.padding.top} * ${variables.scale.large});
+    padding-right: calc(${variables.padding.right} * ${variables.scale.large});
+    padding-bottom: calc(${variables.padding.bottom} * ${variables.scale.large});
+    padding-left: calc(${variables.padding.left} * ${variables.scale.large});
 }
 
-${CommonBase.mixins.placeholder(`color: var(--p-common-input-placeholder-color);`)}
         `;
-
-        const cssVariables = ObjectUtils.convertToString(ObjectUtils.convertToCSSVariables(variables, 'p-common-'));
 
         return `
 /** module: common **/
-:root {
-    ${cssVariables}
-}
 ${unstyled}
 ${styled}
         `;
