@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useStyle } from '../hooks/useStyle';
 import { Ripple } from '../ripple/Ripple';
 import { Tooltip } from '../tooltip/Tooltip';
 import { classNames, IconUtils, ObjectUtils } from '../utils/Utils';
@@ -8,6 +9,7 @@ export const Button = React.memo(
     React.forwardRef((inProps, ref) => {
         const props = ButtonBase.getProps(inProps);
 
+        useStyle({ style: ButtonBase.getComputedStyle(props), options: { key: 'button' } });
         const elementRef = React.useRef(ref);
 
         React.useEffect(() => {

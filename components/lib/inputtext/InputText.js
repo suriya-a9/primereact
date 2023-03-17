@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { CommonBase } from '../common/CommonBase';
 import { useStyle } from '../hooks/useStyle';
 import { KeyFilter } from '../keyfilter/KeyFilter';
 import { Tooltip } from '../tooltip/Tooltip';
@@ -10,8 +9,7 @@ export const InputText = React.memo(
     React.forwardRef((inProps, ref) => {
         const props = InputTextBase.getProps(inProps);
 
-        const commonStyleStatus = useStyle({ style: CommonBase.getComputedStyle(props), options: { key: 'common' } }); // move to PrimeReactProvider
-        const styleStatus = useStyle({ style: InputTextBase.getComputedStyle(props), options: { key: 'inputtext' } });
+        useStyle({ style: InputTextBase.getComputedStyle(props), options: { key: 'inputtext' } });
         const elementRef = React.useRef(ref);
 
         const onKeyDown = (event) => {

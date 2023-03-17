@@ -8,7 +8,9 @@ import '../styles/layout/layout.scss';
 // prettier-ignore
 import '../styles/primereact.css';
 // prettier-ignore
+import { PrimeReactProvider } from '../components/lib/config/PrimeReactContext';
 import '../styles/demo/demo.scss';
+import * as LaraLight from '../themes/lara-light.json';
 
 export default function MyApp({ Component }) {
     const [dark, setDark] = useState(false);
@@ -98,12 +100,14 @@ export default function MyApp({ Component }) {
     };
 
     if (Component.getLayout) {
-        return Component.getLayout(<Component {...props} />);
+        return <PrimeReactProvider>{Component.getLayout(<Component {...props} />)}</PrimeReactProvider>;
     } else {
         return (
-            <Layout {...props}>
-                <Component {...props} />
-            </Layout>
+            <PrimeReactProvider themeProps={LaraLight?.default.global}>
+                <Layout {...props}>
+                    <Component {...props} />
+                </Layout>
+            </PrimeReactProvider>
         );
     }
 }

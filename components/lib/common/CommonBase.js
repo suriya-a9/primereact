@@ -266,7 +266,7 @@ export const CommonBase = {
 /***** _inputtext.scss *****/
 .p-float-label > label {
     left: ${variables.input.padding.left};
-    color: ${variables.input.placeholder.color};
+    color: ${variables.input.slots.placeholder.color};
     transition-duration: ${variables.transition.duration};
 }
 .p-float-label > label.p-error {
@@ -276,7 +276,7 @@ export const CommonBase = {
 .p-input-icon-left > svg:first-of-type,
 .p-input-icon-left > .p-input-prefix {
     left: ${variables.input.padding.left};
-    color: ${variables.input.icon.color};
+    color: ${variables.input.slots.icon.color};
 }
 .p-input-icon-left > .p-inputtext {
     padding-left: calc(calc(${variables.input.padding.left} * 2) + ${variables.primeicon.fontSize});
@@ -288,34 +288,34 @@ export const CommonBase = {
 .p-input-icon-right > svg:last-of-type,
 .p-input-icon-right > .p-input-suffix {
     right: ${variables.input.padding.right};
-    color: ${variables.input.icon.color};
+    color: ${variables.input.slots.icon.color};
 }
 .p-input-icon-right > .p-inputtext {
     padding-right: calc(calc(${variables.input.padding.right} * 2) + ${variables.primeicon.fontSize});
 }
-${mixins.placeholder(`color: ${variables.input.placeholder.color};`)}
+${mixins.placeholder(`color: ${variables.input.slots.placeholder.color};`)}
 .p-input-filled .p-inputtext {
-    background: ${variables.types.filled.background};
+    background: ${variables.input.types.filled.background};
 }
 .p-input-filled .p-inputtext:enabled:hover {
-    background: ${variables.types.filled.states.hover.background};
+    background: ${variables.input.types.filled.states.hover.background};
 }
 .p-input-filled .p-inputtext:enabled:focus {
-    background: ${variables.types.filled.states.focus.background};
+    background: ${variables.input.types.filled.states.focus.background};
 }
 .p-inputtext-sm .p-inputtext {
-    font-size: calc(${variables.font.size} * ${variables.scale.small});
-    padding-top: calc(${variables.padding.top} * ${variables.scale.small});
-    padding-right: calc(${variables.padding.right} * ${variables.scale.small});
-    padding-bottom: calc(${variables.padding.bottom} * ${variables.scale.small});
-    padding-left: calc(${variables.padding.left} * ${variables.scale.small});
+    font-size: calc(${variables.input.font.size} * ${variables.scale.small});
+    padding-top: calc(${variables.input.padding.top} * ${variables.scale.small});
+    padding-right: calc(${variables.input.padding.right} * ${variables.scale.small});
+    padding-bottom: calc(${variables.input.padding.bottom} * ${variables.scale.small});
+    padding-left: calc(${variables.input.padding.left} * ${variables.scale.small});
 }
 .p-inputtext-lg .p-inputtext {
-    font-size: calc(${variables.font.size} * ${variables.scale.large});
-    padding-top: calc(${variables.padding.top} * ${variables.scale.large});
-    padding-right: calc(${variables.padding.right} * ${variables.scale.large});
-    padding-bottom: calc(${variables.padding.bottom} * ${variables.scale.large});
-    padding-left: calc(${variables.padding.left} * ${variables.scale.large});
+    font-size: calc(${variables.input.font.size} * ${variables.scale.large});
+    padding-top: calc(${variables.input.padding.top} * ${variables.scale.large});
+    padding-right: calc(${variables.input.padding.right} * ${variables.scale.large});
+    padding-bottom: calc(${variables.input.padding.bottom} * ${variables.scale.large});
+    padding-left: calc(${variables.input.padding.left} * ${variables.scale.large});
 }
 
         `;

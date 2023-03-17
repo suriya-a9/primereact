@@ -10,7 +10,7 @@ import { DomHandler } from '../utils/Utils';
 
 // options.use = "join | split" include | exclude
 export const useStyle = ({ style, options = {}, props = {} }) => {
-    if (!DomHandler.hasDOM()) return;
+    //if (!DomHandler.hasDOM()) return {};
 
     const scoped = options.type === 'scoped';
     const type = scoped ? 'scoped' : 'global';
@@ -36,6 +36,14 @@ export const useStyle = ({ style, options = {}, props = {} }) => {
         };
     }, []);
 
-    return 'status'; // styleElement
+    return {
+        addStyle: (style, key) => {
+            //styleElement.current.primeStyleMap = styleElement.current.primeStyleMap || new Map();
+            styleElement.current.primeStyleMap.set(key, style);
+            styleElement.current.innerHTML = '';
+            styleElement.current.primeStyleMap.forEach((v) => (styleElement.current.innerHTML += v));
+            document.head.appendChild(styleElement.current);
+        }
+    }; // styleElement
 };
 /* eslint-enable */

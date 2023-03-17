@@ -1,21 +1,15 @@
 import { useState } from 'react';
-import * as LaraLight from '../../../themes/lara-light.json';
-import { useStyle } from '../../lib/hooks/useStyle';
+
 import { InputText } from '../../lib/inputtext/InputText';
-import { ObjectUtils } from '../../lib/utils/Utils';
 import { DocSectionCode } from '../common/docsectioncode';
 import { DocSectionText } from '../common/docsectiontext';
 
 export function BasicDoc(props) {
-    /** PrimeReactProvider */
-    const cssVariables = ObjectUtils.convertToString(ObjectUtils.convertToCSSVariables(LaraLight?.default.global));
-    const style = `
-:root {
-    ${cssVariables}
-}
-    `;
-    const status = useStyle({ style });
-    /*********************/
+    /*const { changeTheme } = useContext(PrimeReactContext);
+
+    useEffect(() => {
+        changeTheme(LaraLight?.default.global);
+    }, []);*/
 
     const [value, setValue] = useState('');
 
