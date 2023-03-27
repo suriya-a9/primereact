@@ -1,10 +1,13 @@
 import * as React from 'react';
+import { useStyle } from '../hooks/useStyle';
 import { classNames, IconUtils } from '../utils/Utils';
 import { TagBase } from './TagBase';
+import { TagStyleBase } from './TagStyleBase';
 
 export const Tag = React.forwardRef((inProps, ref) => {
     const props = TagBase.getProps(inProps);
 
+    useStyle({ style: TagStyleBase.getComputedStyle(), options: { key: 'tag' } });
     const elementRef = React.useRef(null);
     const otherProps = TagBase.getOtherProps(props);
     const className = classNames(
